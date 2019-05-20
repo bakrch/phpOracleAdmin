@@ -1,0 +1,150 @@
+      -----------Ficher à lire--------------
+
+           ----------INDEX----------
+I- INITIALISATION DU SITE WEB ET DE LA BASE DE DONNEE
+II- FONCTIONNEMENT INTERNE DU SITE WEB
+III- TEST DES FONCTIONNALITES
+IV- NOTES ET REFERENCES
+_______________________________________________________
+
+          I-INITIALISATION
+-------------------------------------------------------
+Le fichier de configuration est le fichier config.php
+Il contient une classe finale dont le role est de simplement
+fournir les variables globales à travers le site web.
+
+Le fichier est actuellement configuré pour se connecter
+au serveur RDS d'Amazon, si vous voulez l'essayer localement
+veuillez adapter la chaine TNS à votre configuration.
+
+************Pour tester les différentes interfaces*********
+***********************************************************
+**                                                       **
+**            login: test ; password: test               **
+**                                                       **
+***********************************************************
+
+Le site est également PUBLIQUEMENT accessible à travers 
+l'adresse : 
+http://ec2-52-26-6-163.us-west-2.compute.amazonaws.com/
+
+_______________________________________________________
+
+          II-FONCTIONNEMENT
+-------------------------------------------------------
+Le site est composé de 24 pages php/javascript/css suivant la 
+hiérarchie suivante:
+
+***********Hyérarchie*************
+*                               **
+***/controller                  ** 
+*____router.php                 **
+*____user.php                   **
+*                               **
+***/css                         **
+*____main.css                   **
+*____styleTable.css             **
+*____styleUser.css              **
+*                               **
+**/js                           **
+*____bootstrap3-typeahead.min.js**
+*____createTable.js             **
+*____jquery-3.1.1.min.js        **
+*____tableStyle.js              **  
+*____user.js                    **
+***/model                       **
+*____user.php                   **
+***/PDOOCI                      **
+*____PDO.php                    **
+*____Statement.php              **
+*____Statementiterator.php      **
+*                               **
+***/view                        **
+*____view.php                   **
+*____viewCommon.php             **
+*____viewCreateTable.php        **
+*____viewDummy.php              **
+*____viewLogin.php              **
+*____viewSidebar.php            **
+*____viewSmallTextArea.php      **
+*____viewTable.php              **
+*____viewTextArea.php           **
+*____viewUser.php               **
+*                               **
+**********************************
+
+_______________________________________________________
+          III-TEST DES FONCTIONNALITES
+--------------------------------------------------------
+
+--Affichage des fonctions, procédures, et déclencheurs--
+
+La rubrique "System's tables" du site permet d'afficher toutes 
+les fonctions, procédures,déclencheurs, droits et prévilèges, 
+et schémas ou utilisateurs, en prennant compte des droits 
+d'accès de la personne connectée au site web.
+
+-------------------------Ajout--------------------------
+
+Il est possible d'ajouter des élèments à une table en
+utilisant le champ de requête libre se trouvant dans la 
+rubrique "execute a query". 
+La rubrique "Create table" n'est pas encore totalement 
+fonctionnelle.
+
+
+----------------------Modification----------------------
+
+Il est possible de modifier des élèments en utilisant
+le champ de requête libre se trouvant dans la rubrique
+"execute a query".
+
+
+----------------------Suppression-----------------------
+
+Les deux rubriques "Drop table" et "Drop user" permettent
+de supprimer respectivement une table ou un utilisateur
+(schema) à partir de son nom.
+
+Remarques:
+-Par mesure de sécurité, la suppression des tables concerne
+uniquement les tables de l'utilisateur connectée.
+-Seul un administrateur peut supprimer un autre utilisateur.
+
+
+-----------------------Affichage------------------------
+
+La rubrique "User's tables" permet d'afficher toutes les 
+tables de l'utilisateur actuellement connecté, ainsi que leur
+contenu sous la forme d'un tableau généré dynamiquement par 
+le siteweb.
+
+------Gestion des utilisateurs et leurs permissions-----
+
+Il est possible de gérer les utilisateurs et leurs permissions
+en utilisant le champ de requête libre se trouvant dans la 
+rubrique "Execute a query".
+Seul un administrateur avec les droits nécessaires peut 
+effectuer une telle requête.
+Pour plus d'informations sur vos privilèges visitez la 
+rubrique "System's tables".
+
+          I-NOTES ET REFERENCES
+-------------------------------------------------------
+
+-Les rubriques "User's profil" et "Preferences" ne sont pas
+implémentées et ne sont présentes que dans un but décoratif.
+-Le site web utilise utilise la bibliothèque PDOOCI pour 
+simuler le fonction de l'extension PDO à travers les fonctions
+OCI.
+github de la bibliothèque: https://github.com/taq/pdooci/
+
+Autres références: 
+https://stackoverflow.com/
+http://getbootstrap.com/
+https://github.com/twbs/bootstrap
+https://jquery.com/
+http://php.net/
+
+
+
